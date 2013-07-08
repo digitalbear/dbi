@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dive Butler</title>
+    <title>Dive Butler</title>	
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.css"/>
 	<link rel="stylesheet" href="map.css"/>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.js"></script>
-	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDwZEp-H7ZEyr1x4JPerPlfgdxNnn3fzUQ&sensor=true"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDwZEp-H7ZEyr1x4JPerPlfgdxNnn3fzUQ&sensor=true"></script>	
   </head>
   <body>
   
@@ -30,46 +30,7 @@
           </ul>
         </div>
       </div> 
-
-	  <script>
-		/*
-		 * Google Maps documentation: http://code.google.com/apis/maps/documentation/javascript/basics.html
-		 * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
-		 */
-		$( document ).on( "pageshow", "#map-page", function() {
-			var defaultLatLng = new google.maps.LatLng(53.3428, -6.2661);  // Default to Dublin when no geolocation support
-			if ( navigator.geolocation ) {
-				function success(pos) {
-					// Location found, show map with these coordinates
-					drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-				}
-				function fail(error) {
-					drawMap(defaultLatLng);  // Failed to find location, show default map
-				}
-				// Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
-				navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
-			} else {
-				drawMap(defaultLatLng);  // No geolocation support, show default map
-			}
-			
-			function drawMap(latlng) {
-				var myOptions = {
-					zoom: 10,
-					center: latlng,
-					mapTypeId: google.maps.MapTypeId.ROADMAP
-				};
-				var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
-				// Add an overlay to the map of current lat/lng
-				var marker = new google.maps.Marker({
-					position: latlng,
-					map: map,
-					title: "Greetings!"
-				});
-			}
-		});			
-	  </script>		
-    
+	  <script src="map.js"></script>
 	</div>		
-
   </body>
 </html>
