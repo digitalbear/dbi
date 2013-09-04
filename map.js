@@ -3,6 +3,7 @@
  * Geolocation documentation: http://dev.w3.org/geo/api/spec-source.html
  */
 $( document ).on( "pageshow", "#map-page", function() {
+	console.log("page loading");
 	var defaultLatLng = new google.maps.LatLng(50.371087,-4.144646);  // Default to Plymouth when no geolocation support
 	if ( navigator.geolocation ) {
 		function success(pos) {
@@ -10,9 +11,17 @@ $( document ).on( "pageshow", "#map-page", function() {
 			drawMap(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
 		}
 		function fail(error) {
-			drawMap(defaultLatLng);  // Failed to find location, show default map
+			var errors = {
+				1: 'Permission denied - You may need to change your location settings to allow',
+				2: 'Position unavailable',
+				3: 'Request timeout'
+			};
+			console.log("Error: " + errors[error.code]);
+			alert("Error: " + errors[error.code]);
+			// drawMap(defaultLatLng);  // Failed to find location, show default map
 		}
 		// Find the users current position.  Cache the location for 5 minutes, timeout after 6 seconds
+		// enableHighAccuracy - is this required?
 		navigator.geolocation.getCurrentPosition(success, fail, {maximumAge: 500000, enableHighAccuracy:true, timeout: 6000});
 	} else {
 		drawMap(defaultLatLng);  // No geolocation support, show default map
