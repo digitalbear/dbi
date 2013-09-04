@@ -23,16 +23,26 @@
 			<h3></h3>
 			<a onclick="getLocation()" data-role="button">Search Near Me</a>
 		</div>
+
+		<div id="locationerrorpopup" data-role="popup" data-dismissible="true" data-overlay-theme="a" data-theme="c" 
+			class="ui-corner-all">
+			<div data-role="header">
+				<h1>Location Error</h1>
+			</div>
+			<div id="errorpopuptext" data-role="content">
+				<p>Error: location services may be turned off</p>
+			</div>
+		</div>		
 	
 		<div data-role="content">
-			<a href="map.html" data-role="button">Search Worldwide</a>
+			<a href="search.html" data-role="button">Search Worldwide</a>
 		</div>		
 	  
 		<div data-role="footer" data-position="fixed">
 			<h3></h3>
 			<a href="about.html" data-role="button"  class="ui-btn-right">About</a>
 		</div>      
-		
+	
     </div>
 	
 	<div id="locationerrordialog" data-role="page">
@@ -43,6 +53,6 @@
 			<p>Error: location services may be turned off</p>
 		</div>
 	</div>
-    
+
   </body>
 </html>
